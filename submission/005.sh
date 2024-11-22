@@ -6,7 +6,7 @@ source env.sh
 
 txid="37d966a263350fe747f1c606b159987545844a493dd38d84b070027a895c4517"
 
-tx=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" getrawtransaction "$txid" true)
+tx=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" getrawtransaction "$txid" true)
 
 inputs=$(echo "$tx" | jq -c '.vin')
 
@@ -37,7 +37,7 @@ pubkeys_json=$(printf '%s\n' "${pubkeys[@]}" | jq -R . | jq -s .)
 required=1
 
 # Create the P2SH multisig address
-multisig=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" createmultisig "$required" "$pubkeys_json")
+multisig=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" createmultisig "$required" "$pubkeys_json")
 
 # Extract the address
 address=$(echo "$multisig" | jq -r '.address')

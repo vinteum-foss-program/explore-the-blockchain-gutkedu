@@ -5,15 +5,15 @@ source env.sh
 
 block_height=123321
 
-block_hash=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" getblockhash $block_height)
+block_hash=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" getblockhash $block_height)
 
 # Get the block details
-block=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" getblock $block_hash 2)
+block=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" getblock $block_hash 2)
 
 # Iterate through each transaction in the block
 for tx_id in $(echo "$block" | jq -r '.tx[].txid'); do
   # Raw transaction details
-  raw_tx=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" getrawtransaction $tx_id true)
+  raw_tx=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" getrawtransaction $tx_id true)
   
   # Iterate through each output in the transaction
   for vout in $(echo "$raw_tx" | jq -r '.vout[] | @base64'); do
@@ -22,7 +22,7 @@ for tx_id in $(echo "$block" | jq -r '.tx[].txid'); do
     }
     
     # Check if the output is unspent
-    spent=$(bitcoin-cli -rpcconnect="$RPC_CONNECT" -rpcuser="$RPC_USER" -rpcpassword="$RPC_PASSWORD" gettxout $tx_id $(_jq '.n'))
+    spent=$(bitcoin-cli -rpcconnect="84.247.182.145" -rpcuser="user_071" -rpcpassword="PGNf2H0Psfdy" gettxout $tx_id $(_jq '.n'))
     if [ -n "$spent" ]; then
       # Output the address
       address=$(_jq '.scriptPubKey.address')
