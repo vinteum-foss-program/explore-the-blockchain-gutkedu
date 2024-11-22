@@ -1,6 +1,3 @@
-#!/bin/bash
-source env.sh
-
 # Which tx in block 257,343 spends the coinbase output of block 256,128?
 
 # Get the block hash of block 256128

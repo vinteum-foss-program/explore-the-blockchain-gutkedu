@@ -1,6 +1,3 @@
-#!/bin/bash
-source env.sh
-
 # Only one single output remains unspent from block 123,321. What address was it sent to?
 
 block_height=123321

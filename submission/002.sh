@@ -1,6 +1,3 @@
-#!/bin/bash
-source env.sh
-
 # (true / false) Verify the signature by this address over this message:
 #   address: `1E9YwDtYf9R29ekNAfbV7MvB4LNv7v3fGa`
 #   message: `1E9YwDtYf9R29ekNAfbV7MvB4LNv7v3fGa`
